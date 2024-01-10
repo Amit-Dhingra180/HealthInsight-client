@@ -3,16 +3,16 @@ import React, { useEffect } from 'react';
 const SimpleComponent = () => {
 
   const someStuff = {
-    a:70,
-    b:50,
+    a:2,
+    b:90,
     c:50,
-    d:50,
-    e:50,
-    f:50,
-    g:50,
+    d:78,
+    e:23,
+    f:51,
+    g:45,
   }
 
-  console.log(someStuff)
+  
 
   useEffect(() => {
     const sendData = async () => {
@@ -25,7 +25,7 @@ const SimpleComponent = () => {
       });
 
       const result = await response.json();
-      console.log(result)
+      console.log(result.data)
       
     };
 
