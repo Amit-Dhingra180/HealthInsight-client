@@ -1,43 +1,63 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 
 const SimpleComponent = () => {
 
-  const someStuff = {
-    a:2,
-    b:90,
-    c:50,
-    d:78,
-    e:23,
-    f:51,
-    g:45,
+  const [diabetes_data, setDiabetes_data] = useState({
+    a:NaN,
+    b:NaN,
+    c:NaN,
+    d:NaN,
+    e:NaN,
+    f:NaN,
+    g:NaN,
+  })
+
+  const [prediction, setPrediction] = useState(0)
+
+  const handleChange = (attribute, event) => {
+    const inputValue = event.target.value;
+  
+    setDiabetes_data((prevData) => ({
+      ...prevData,
+      [attribute]: inputValue === '' ? (typeof prevData[attribute] === 'number' ? NaN : '') : inputValue,
+    }))
   }
 
-  
+  const handleSubmit = async () => {
+    const response = await fetch('http://127.0.0.1:5000/api/diabetes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(Object.values(diabetes_data)),
+    });
 
-  useEffect(() => {
-    const sendData = async () => {
-      const response = await fetch('http://127.0.0.1:5000/api/diabetes', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(Object.values(someStuff)),
-      });
-
-      const result = await response.json();
-      console.log(result.data)
-      
-    };
-
-    sendData();
-  }, []);
+    const result = await response.json();
+    
+    setPrediction(result.data)
+  };
 
   
 
   return (
-    <div>
-      <h1>Simple React Component</h1>
-      <p>This component sends an array of two integers to the Flask backend.</p>
+    <div className=' flex flex-col w-1/4'>
+      <span>a</span>
+      <input type='text' onChange={(event) => handleChange('a',event)} className=' border-2 border-black'/>
+      <span>b</span>
+      <input type='text' onChange={(event) => handleChange('b',event)} className=' border-2 border-black'/>
+      <span>c</span>
+      <input type='text' onChange={(event) => handleChange('c',event)} className=' border-2 border-black'/>
+      <span>d</span>
+      <input type='text' onChange={(event) => handleChange('d',event)} className=' border-2 border-black'/>
+      <span>e</span>
+      <input type='text' onChange={(event) => handleChange('e',event)} className=' border-2 border-black'/>
+      <span>f</span>
+      <input type='text' onChange={(event) => handleChange('f',event)} className=' border-2 border-black'/>
+      <span>g</span>
+      <input type='text' onChange={(event) => handleChange('g',event)} className=' border-2 border-black'/>
+
+      <button onClick={handleSubmit}>Submit</button>
+      <span>{prediction}</span>
     </div>
   );
 };
