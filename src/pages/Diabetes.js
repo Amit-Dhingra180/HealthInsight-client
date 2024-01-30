@@ -44,7 +44,7 @@ const Diabetes = () => {
   return (
     <div>
    
-    <div className="bg-cover bg-center min-h-screen " style={{ backgroundImage: 'url(/diabetes_bg.png)' }}>
+    <div className="bg-cover bg-center min-h-screen " style={{ backgroundImage: 'url(/diabetes_bg2.png)' }}>
 
    <div className='w-full h-full px-4 pr-8 pt-8 sm_md:w-[650px] sm_md:h-[450px] sm_md:absolute sm_md:left-1/2 sm_md:top-1/2 sm_md:transform sm_md:-translate-x-1/2 sm_md:-translate-y-1/2'>
 
