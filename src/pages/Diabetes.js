@@ -14,7 +14,9 @@ const Diabetes = () => {
     Age:NaN,
   })
 
-  const [prediction, setPrediction] = useState(0)
+  const [prediction, setPrediction] = useState(NaN)
+  const [loading, setLoading] = useState(false);
+
 
   const handleChange = (attribute, event) => {
     const inputValue = event.target.value;
@@ -26,6 +28,7 @@ const Diabetes = () => {
   }
 
   const handleSubmit = async () => {
+    setLoading(true);
     const response = await fetch('https://amitdhingra.pythonanywhere.com/api/diabetes', {
       method: 'POST',
       headers: {
@@ -37,6 +40,8 @@ const Diabetes = () => {
     const result = await response.json();
     
     setPrediction(result.data)
+    setLoading(false);
+
   };
 
   
@@ -46,7 +51,7 @@ const Diabetes = () => {
    
     <div className="bg-cover bg-center min-h-screen " style={{ backgroundImage: 'url(/diabetes_bg2.png)' }}>
 
-   <div className='w-full h-full px-4 pr-8 pt-8 sm_md:w-[650px] sm_md:h-[450px] sm_md:absolute sm_md:left-1/2 sm_md:top-1/2 sm_md:transform sm_md:-translate-x-1/2 sm_md:-translate-y-1/2'>
+   <div className='w-full h-full px-4 pr-8 pt-4 sm_md:w-[650px] sm_md:h-[390px] sm_md:absolute sm_md:left-1/2 sm_md:top-1/2 sm_md:transform sm_md:-translate-x-1/2 sm_md:-translate-y-1/2'>
 
     <div className='text-4xl text-white pb-4'>
       Diabetes
@@ -69,11 +74,15 @@ const Diabetes = () => {
     </div>
 
     <div>
-      <button onClick={handleSubmit} className='text-white text-2xl font-semibold mt-4 mb-4'>Get Prediction</button>
+      <button onClick={handleSubmit} className='text-white text-lg sm_md:text-2xl font-semibold mt-4 mb-4'>Get Prediction</button>
     </div>
 
     <div>
-      <span className='text-white'>{prediction}</span>
+      {loading && <div className='text-white'>Loading...</div>}
+    </div>
+
+    <div>
+      {!isNaN(prediction) && <span className='text-white'>{prediction}</span>}
     </div>
 
 
