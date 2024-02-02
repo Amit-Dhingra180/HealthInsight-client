@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InputDiabetes = ({ label, attribute, onChange }) => {
+const InputField = ({ label, attribute, onChange }) => {
   return (
     <div className=''>
       <div className='font-semibold text-white mb-2'>{label}</div>
@@ -13,4 +13,4 @@ const InputDiabetes = ({ label, attribute, onChange }) => {
   );
 };
 
-export default InputDiabetes;
+export default InputField;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import InputDiabetes from '../components/InputDiabetes';
+import InputField from '../components/InputField';
+
 
 
 const Diabetes = () => {
@@ -49,28 +50,28 @@ const Diabetes = () => {
   return (
     <div>
    
-    <div className="bg-cover bg-center min-h-screen " style={{ backgroundImage: 'url(/diabetes_bg2.png)' }}>
+    <div className="bg-cover bg-center min-h-screen flex justify-center sm_md:items-center" style={{ backgroundImage: 'url(/diabetes_bg2.png)' }}>
 
-   <div className='w-full h-full px-4 pr-8 pt-4 sm_md:w-[650px] sm_md:h-[390px] sm_md:absolute sm_md:left-1/2 sm_md:top-1/2 sm_md:transform sm_md:-translate-x-1/2 sm_md:-translate-y-1/2'>
+   <div className='w-full sm_md:w-auto px-4 py-4'>
 
     <div className='text-4xl text-white pb-4'>
       Diabetes
     </div>
 
     <div className='sm_md:flex sm_md:space-x-4'>
-      <InputDiabetes label='Pregnancies' attribute='Pregnancies' onChange={handleChange} />
-      <InputDiabetes label='Glucose' attribute='Glucose' onChange={handleChange} />
-      <InputDiabetes label='BloodPressure' attribute='BloodPressure' onChange={handleChange} />
+      <InputField label='Pregnancies' attribute='Pregnancies' onChange={handleChange} />
+      <InputField label='Glucose' attribute='Glucose' onChange={handleChange} />
+      <InputField label='BloodPressure' attribute='BloodPressure' onChange={handleChange} />
     </div>
 
     <div className='sm_md:flex sm_md:space-x-4'>
-      <InputDiabetes label='SkinThickness' attribute='SkinThickness' onChange={handleChange} />
-      <InputDiabetes label='Insulin' attribute='Insulin' onChange={handleChange} />
-      <InputDiabetes label='BMI' attribute='BMI' onChange={handleChange} />
+      <InputField label='SkinThickness' attribute='SkinThickness' onChange={handleChange} />
+      <InputField label='Insulin' attribute='Insulin' onChange={handleChange} />
+      <InputField label='BMI' attribute='BMI' onChange={handleChange} />
     </div>
 
     <div> 
-      <InputDiabetes label='Age' attribute='Age' onChange={handleChange} />
+      <InputField label='Age' attribute='Age' onChange={handleChange} />
     </div>
 
     <div>
