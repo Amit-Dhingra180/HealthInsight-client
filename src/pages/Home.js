@@ -16,7 +16,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className='text-white text-xl sm_md:text-2xl lg:text-4xl xl:text-5xl space-y-3 ml-8'>
+            <div className='text-white text-xl sm_md:text-2xl lg:text-4xl xl:text-5xl space-y-3 ml-3 sm_md:ml-8 mt-4'>
               <div>
                 Welcome to Health Insight.
               </div>
